@@ -1,4 +1,4 @@
-import { parseArgs } from "node:util";
+/*import { parseArgs } from "node:util";
 import { PrismaClient } from "@/prisma/generated/client";
 import { createPublicClient, webSocket, Address, Hash, zeroHash } from "viem";
 import { mainnet, optimism } from "viem/chains";
@@ -116,4 +116,4 @@ for (
   blockNumber++
 ) {
   await indexBlock(blockNumber);
-}
+}*/
