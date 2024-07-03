@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+  // provider = "postgres"
+  // url      = env("POSTGRES_URL")
+}
+
+model DeployConfig {
+  l2ChainId   Int    @id
+  l1ChainId   Int
+  l2BlockTime BigInt
+}
+
+model Block {
+  number       BigInt        @id
+  hash         String        @unique
+  timestamp    BigInt
+  gasUsed      String
+  gasLimit     String
+  extraData    String
+  parentHash   String
+  transactions Transaction[]
+}
+
+model Transaction {
+  hash                 String  @id
+  blockNumber          BigInt
+  from                 String
+  to                   String?
+  value                String
+  gas                  String
+  gasPrice             String?
+  maxFeePerGas         String?
+  maxPriorityFeePerGas String?
+  nonce                Int
+  transactionIndex     Int
+  input                String
+  signature            String
+  timestamp            BigInt
+  block                Block   @relation(fields: [blockNumber], references: [number])
+}
